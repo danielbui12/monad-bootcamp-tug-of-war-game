@@ -1,37 +1,35 @@
 {
-  "name": "solidity-foundry-boilerplate",
+  "name": "monad-bootcamp-tug-war",
   "version": "1.0.0",
-  "description": "Production ready Solidity boilerplate with Foundry",
+  "description": "Tug War game for Monad Bootcamp",
   "scripts": {
     "build": "forge build",
     "build:optimized": "FOUNDRY_PROFILE=optimized forge build",
     "coverage": "forge coverage --report summary --report lcov --match-path 'test/unit/*'",
-    "deploy:mainnet": "bash -c 'source .env && forge script Deploy --rpc-url $MAINNET_RPC --account $MAINNET_DEPLOYER_NAME --broadcast --verify --chain mainnet -vvvvv'",
-    "deploy:sepolia": "bash -c 'source .env && forge script Deploy --rpc-url $SEPOLIA_RPC --account $SEPOLIA_DEPLOYER_NAME --broadcast --verify --chain sepolia -vvvvv'",
-    "lint:check": "yarn lint:sol && forge fmt --check",
-    "lint:fix": "sort-package-json && forge fmt && yarn lint:sol --fix",
-    "lint:natspec": "lintspec src -f variable",
+    "deploy:monad_testnet": "bash -c 'source .env && forge script Deploy --rpc-url $MONAD_TESTNET_RPC --private-key $MONAD_TESTNET_DEPLOYER_PRIVATE_KEY --broadcast -vvvvv'",
+    "deploy:localnet": "bash -c 'source .env && forge script Deploy --rpc-url $LOCALNET_RPC --private-key $LOCALNET_DEPLOYER_PRIVATE_KEY --broadcast -vvvvv'",
+    "script:reset:monad_testnet": "bash -c 'source .env && forge script TugWarReset --rpc-url $MONAD_TESTNET_RPC --private-key $MONAD_TESTNET_DEPLOYER_PRIVATE_KEY --broadcast -vvvvv'",
+    "script:reset:localnet": "bash -c 'source .env && forge script TugWarReset --rpc-url $LOCALNET_RPC --private-key $LOCALNET_DEPLOYER_PRIVATE_KEY --broadcast -vvvvv'",
+    "lint:check": "pnpm lint:sol && forge fmt --check",
+    "lint:fix": "sort-package-json && forge fmt && pnpm lint:sol --fix",
     "lint:sol": "solhint 'src/**/*.sol' 'script/**/*.sol' 'test/**/*.sol'",
-    "prepare": "husky",
     "test": "forge test -vvv",
-    "test:fuzz": "medusa fuzz",
-    "test:integration": "forge test --match-contract Integration -vvv",
-    "test:unit": "forge test --match-contract Unit -vvv",
-    "test:unit:deep": "FOUNDRY_FUZZ_RUNS=5000 yarn test:unit"
+    "test:unit": "forge test -vvv",
+    "test:unit:deep": "FOUNDRY_FUZZ_RUNS=5000 pnpm test:unit"
   },
   "lint-staged": {
     "*.{js,css,md,ts,sol}": "forge fmt",
-    "(src|test|script)/**/*.sol": "yarn lint:sol",
+    "(src|test|script)/**/*.sol": "pnpm lint:sol",
     "package.json": "sort-package-json"
   },
   "devDependencies": {
     "@commitlint/cli": "19.3.0",
     "@commitlint/config-conventional": "19.2.2",
-    "forge-std": "github:foundry-rs/forge-std#1.9.2",
+    "forge-std": "github:foundry-rs/forge-std#v1.9.7",
     "husky": ">=9",
     "lint-staged": ">=10",
     "solhint-community": "4.0.1",
     "sort-package-json": "2.10.0"
   },
-  "packageManager": "yarn@4.8.0+sha512.85ec3149b1ec48f47c2690e13b29197a8a84b09c2c936cc596dddfb49c517e3bc3b1881ec52b5d35ca4b7c437c3f0daae3a80e39438c93bbcc5fcece2df5f15a"
+  "packageManager": "pnpm@10.11.1+sha512.e519b9f7639869dc8d5c3c5dfef73b3f091094b0a006d7317353c72b124e80e1afd429732e28705ad6bfa1ee879c1fce46c128ccebd3192101f43dd67c667912"
 }
