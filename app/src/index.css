@@ -1,0 +1,433 @@
+:root,
+[data-theme] {
+  background: oklch(var(--b2));
+}
+
+body {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+.btn {
+  @apply shadow-md;
+}
+
+.btn.btn-ghost {
+  @apply shadow-none;
+}
+
+/* Tug of War Game Styles */
+.tug-of-war-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.tug-of-war-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.win-message {
+  color: #10B981;
+  animation: bounce 1s infinite;
+  margin: 2rem 0;
+  background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.tug-of-war-score-board {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #F8FAFC;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+}
+
+.tug-of-war-team1-score,
+.tug-of-war-team2-score {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  min-width: 150px;
+  text-align: center;
+}
+
+.tug-of-war-team1-score {
+  background: #EEF2FF;
+  color: #4F46E5;
+  border: 1px solid #E0E7FF;
+}
+
+.tug-of-war-team2-score {
+  background: #ECFDF5;
+  color: #059669;
+  border: 1px solid #D1FAE5;
+}
+
+.tug-of-war-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 180px;
+  margin: 2rem 0;
+  background: linear-gradient(to bottom, #F8FAFC, #F1F5F9);
+  border-radius: 16px;
+  padding: 0 2rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #E2E8F0;
+}
+
+.tug-of-war-team1,
+.tug-of-war-team2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1E293B;
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.tug-of-war-rope-line {
+  flex-grow: 1;
+  height: 12px;
+  background: #E2E8F0;
+  position: relative;
+  margin: 0 1.5rem;
+  border-radius: 6px;
+  overflow: visible;
+  width: 300px;
+  max-width: 300px;
+  border: 1px solid #CBD5E1;
+}
+
+.tug-of-war-flag {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(calc(-50% + var(--flag-offset)));
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.tug-of-war-flag-triangle {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 40px solid #DC2626;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+.tug-of-war-rope-center {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: #94A3B8;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.tug-of-war-controls {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tug-of-war-pull-button {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 200px;
+}
+
+.tug-of-war-pull-button:first-child {
+  background: linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
+  border: 1px solid #4338CA;
+}
+
+.tug-of-war-pull-button:last-child {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  border: 1px solid #047857;
+}
+
+.tug-of-war-pull-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.tug-of-war-pull-button:active {
+  transform: translateY(0);
+}
+
+.tug-of-war-pull-button:disabled {
+  background: #E2E8F0;
+  border-color: #CBD5E1;
+  color: #94A3B8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Status Messages and Transaction Info */
+.status-message {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.status-message.pending {
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FDE68A;
+}
+
+.status-message.confirming {
+  background: #DBEAFE;
+  color: #1E40AF;
+  border: 1px solid #BFDBFE;
+}
+
+.status-message.confirmed {
+  background: #DCFCE7;
+  color: #166534;
+  border: 1px solid #BBF7D0;
+}
+
+.status-message.error {
+  background: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+}
+
+.transaction-hash {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #F8FAFC;
+  border-radius: 8px;
+  font-family: 'Roboto Mono', monospace;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  border: 1px solid #E2E8F0;
+}
+
+.transaction-hash a {
+  color: #4F46E5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.transaction-hash a:hover {
+  color: #4338CA;
+  text-decoration: underline;
+}
+
+/* Chain Info Section */
+.chain-info {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #F8FAFC;
+  border-radius: 8px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.875rem;
+  color: #1E293B;
+  border: 1px solid #E2E8F0;
+}
+
+.chain-info>p {
+  text-align: center;
+}
+
+/* Wallet Styles */
+.wallet-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.wallet-section {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.wallet-section:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.wallet-title {
+  font-size: 1.75em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2D3748;
+}
+
+.wallet-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.wallet-info {
+  font-size: 1.1em;
+  text-align: left;
+  flex: 1;
+}
+
+.wallet-info>div {
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wallet-status {
+  font-weight: 600;
+  color: #48BB78;
+  margin-left: 8px;
+}
+
+.wallet-chainid {
+  font-weight: 600;
+  color: #4299E1;
+  margin-left: 8px;
+}
+
+.wallet-address {
+  font-family: 'Roboto Mono', monospace;
+  color: #4A5568;
+  font-weight: 500;
+  background: #EDF2F7;
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-left: 8px;
+}
+
+.wallet-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.wallet-connectors {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.wallet-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wallet-button.connect {
+  background-color: #4F46E5;
+  color: white;
+}
+
+.wallet-button.connect:hover {
+  background-color: #4338CA;
+  transform: translateY(-1px);
+}
+
+.wallet-button.disconnect {
+  background-color: #EF4444;
+  color: white;
+}
+
+.wallet-button.disconnect:hover {
+  background-color: #DC2626;
+  transform: translateY(-1px);
+}
+
+.wallet-button.switch {
+  background-color: #3B82F6;
+  color: white;
+  margin-left: 12px;
+  padding: 6px 12px;
+  font-size: 0.9em;
+}
+
+.wallet-button.switch:hover {
+  background-color: #2563EB;
+}
+
+.wallet-button:disabled {
+  background-color: #E2E8F0;
+  color: #A0AEC0;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.wallet-error {
+  color: #EF4444;
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #FEE2E2;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

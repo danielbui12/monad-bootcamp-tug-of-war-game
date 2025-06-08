@@ -1,0 +1,6 @@
+[submodule "contracts/TugWarContract/lib/forge-std"]
+	path = contracts/TugWarContract/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "contracts/tug-war-contract/lib/forge-std"]
+	path = contracts/tug-war-contract/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
