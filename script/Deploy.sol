@@ -16,7 +16,7 @@ contract Deploy is Script {
   function setUp() public {
 
     // Monad Testnet
-    _deploymentParams[10_143] = DeploymentParams(msg.sender);
+    _deploymentParams[10_143] = DeploymentParams(0x3f71E4705Ba218D9Aad854f40387e26801FcbF8d);
 
     // Localnet
     _deploymentParams[31_337] = DeploymentParams(msg.sender);
@@ -26,7 +26,7 @@ contract Deploy is Script {
     DeploymentParams memory _params = _deploymentParams[block.chainid];
 
     vm.startBroadcast();
-    // new TugWar(_params.owner);
+    new TugWar(_params.owner);
     vm.stopBroadcast();
   }
 }

@@ -12,7 +12,7 @@ contract TugWarReset is Script {
   function setUp() public {
 
     // Monad Testnet
-    _deployedSmartContract[10_143] = 0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e;
+    _deployedSmartContract[10_143] = 0xF54A7F451b525359b4BBf45611E8451bcd63b336;
 
     // Localnet
     _deployedSmartContract[31_337] = 0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e;
@@ -24,7 +24,7 @@ contract TugWarReset is Script {
 
     vm.startBroadcast();
     TugWar tugWarContract = TugWar(tugWar);
-    // tugWarContract.reSet(5);
+    tugWarContract.reSet(2);
     vm.stopBroadcast();
   }
 }
